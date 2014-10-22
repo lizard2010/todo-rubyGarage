@@ -38,6 +38,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Gemfile
+# rspec
 gem "rspec-rails", "~> 2.14.0"
 
+# heroku
+gem 'rails_12factor'
+ruby '2.0.0'
