@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//#= #requ#ire tu#rbo#links
 // Add the following two lines
 //= require angular
 //= require main
