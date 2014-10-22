@@ -11,7 +11,14 @@
 # sense as we add more routes to our application.
 @todo.config(['$routeProvider', ($routeProvider) ->
   $routeProvider.
-    otherwise({
+    when('/tasks', {
+      templateUrl: '../templates/tasks/index.html',
+      controller: 'TaskIndexCtrl'
+    }).
+    when('/tasks/:id', {
+      templateUrl: '../templates/tasks/show.html',
+      controller: 'TaskShowCtrl'
+    }).otherwise({
       templateUrl: '../templates/home.html',
       controller: 'HomeCtrl'
     }) 
