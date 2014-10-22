@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+tasks = Task.create([
+    {name: 'Clear a kitchen',
+     project_id: 1,
+     prio: false,
+     deadline: '2014-12-12 01:02:03',
+     done: false
+    },
+    {name: 'Build a house',
+     project_id: 1,
+     prio: true,
+     deadline: '2015-12-12 01:02:03',
+     done: false
+    }])
+Project.create([
+    id: 1,
+    name: 'My project 1',
+    user_id: 1
+         ])
