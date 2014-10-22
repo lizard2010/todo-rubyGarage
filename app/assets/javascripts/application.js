@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+// Add the following two lines
+//= require angular
+//= require main
 //= require_tree .
