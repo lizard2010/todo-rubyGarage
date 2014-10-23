@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save!(user_params)
+      user.save!()
     end
   end
-  private
+/*  private
   def user_params
     params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at)
   end
+*/
 end
