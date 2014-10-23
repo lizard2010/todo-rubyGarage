@@ -44,3 +44,7 @@ gem "rspec-rails", "~> 2.14.0"
 # heroku
 gem 'rails_12factor'
 ruby '2.0.0'
+
+#FB
+gem 'omniauth'
+gem 'omniauth-facebook'
