@@ -1,7 +1,7 @@
-<div style="width: 320px; background-color: lightgray;">
+<div class="loginpopup">
 
     <div class="padding5555">
-        <h1>Login</h1>
+        <h1 class="white pad30perc">Login</h1>
     </div>
     <form role="form">
     <div class="body padding5555">
@@ -13,8 +13,11 @@
           <label for="inputPass1">Password:</label>
           <input type="password" ng-model="login_user.password" class="form-control" id="inputPass1" />
       </div>
-        <button ng-click="login()" class="btn btn-primary" >Login</button>
-        <button ng-click="signup()" class="btn btn-primary">sign-up!</button>
+        <button ng-click="login()" class="btn btn-primary" >Login</button>  or
+        <fb:login-button  size="large" show_faces="false">Login via Facebook</fb:login-button>
+    </div>
+    <div class="pad30perc padding5555">
+        <button ng-click="signup()" class="btn btn-default">Free sign-up!</button>
     </div>
     </form>
 </div>

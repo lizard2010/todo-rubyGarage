@@ -19,3 +19,14 @@ jQuery ->
     FB.getLoginStatus (response) ->
       FB.logout() if response.authResponse
     true
+
+
+`(function(d, s, id) {
+/* FB button **/
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=341975405982394&version=v1.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+`
