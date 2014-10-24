@@ -1,2 +1,2 @@
-@todo.controller 'LogimIndexCtrl', ['$scope', '$location', '$http', ($scope, $location, $http) ->
+@todo.controller 'LoginIndexCtrl', ['$scope', '$location', '$http', ($scope, $location, $http) ->
 ]
