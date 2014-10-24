@@ -15,6 +15,10 @@
       templateUrl: '../templates/tasks/index.html',
       controller: 'TaskIndexCtrl'
     }).
+    when('/login', {
+      templateUrl: '../templates/login/index.html',
+      controller: 'LoginIndexCtrl'
+    }).
     when('/tasks/:id', {
       templateUrl: '../templates/tasks/show.html',
       controller: 'TaskShowCtrl'

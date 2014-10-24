@@ -16,4 +16,5 @@
 // Add the following two lines
 //= require angular
 //= require main
+//= require bootstrap-sprockets
 //= require_tree .
