@@ -1,5 +1,23 @@
-<a href="/#">index</a>
-<ul ng-repeat="task in tasks">
-  <li><a ng-click="viewTask(task.id)">{{ task.name }}</a>
-  </li>
-</ul>
+<div class="tasklist">
+    <div class="modal-header white"><span style="glyphicon glyphicon-list-alt fleft"></span>Task list</div>
+    <div class="before-list ">
+        <div class="col-lg-1">
+        <span class="glyphicon glyphicon-plus dsggreen fleft" ></span>
+        </div>
+        <form class="form-horizontal" role="form">
+        <div class="col-lg-10">
+        <div class="input-group fleft" >
+          <input type="text" class="form-control" placeholder="Start typing here to create a task…">
+          <span class="input-group-btn">
+            <button class="btn btn-default dsggreenbg white" type="button">Add task</button>
+          </span>
+        </div><!-- /input-group -->
+        </div>
+        </form>
+        <div class="clearfix"></div>
+    </div><!-- /row -->
+    <ul class="list-group">
+      <li ng-repeat="task in tasks" class="list-group-item"><a ng-click="viewTask(task.id)">{{ task.name }}</a>
+      </li>
+    </ul>
+</div>
