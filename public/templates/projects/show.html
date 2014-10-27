@@ -20,9 +20,9 @@
     </div><!-- /row -->
     <ul class="list-group">
       <li ng-repeat="task in tasks" class="list-group-item"><a ng-click="viewTask(task.id)">{{ task.name }}</a>
-          <span class="glyphicon glyphicon-remove  padding5555 flright red"></span>
-          <span class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
-          <span class="glyphicon glyphicon-list-alt padding5555 flright"></span>
+          <span class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="delTask(task.id)"></span>
+          <span class="glyphicon glyphicon-circle-arrow-up padding5555 flright"  ng-click="prioUpTask(task.id)"></span>
+          <span class="glyphicon glyphicon-list-alt padding5555 flright"  ng-click="viewTask(task.id)"></span>
       </li>
     </ul>
 </div>

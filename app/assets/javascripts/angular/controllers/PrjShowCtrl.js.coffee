@@ -1,4 +1,4 @@
-@todo.controller 'PrjShowCtrl', ['$scope', '$routeParams', '$http', ($scope, $routeParams, $http) ->
+@todo.controller 'PrjShowCtrl',  ['$scope', '$routeParams', '$location', '$http', ($scope, $routeParams, $location, $http) ->
   $scope.tasks = []
   $http.get('./users/tasks/'+ $routeParams.id + '.json').success((data) ->
     $scope.tasks = data

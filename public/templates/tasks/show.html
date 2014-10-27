@@ -1,1 +1,31 @@
 <h1>{{task.name}}</h1>
+
+<div class="tasklist">
+    <div class="modal-header white"><span style="glyphicon glyphicon-list-alt fleft"></span>
+        <a class="white" href="#/projects">{{project.name}}</a> ::
+        <a class="white" ng-href="#/projects/{{task.project_id}}">{{task.name}}</a> :: Comments </div>
+    <div class="before-list ">
+        <div class="col-lg-1">
+            <span class="glyphicon glyphicon-plus dsggreen fleft" ></span>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="col-lg-10">
+                <div class="input-group fleft" >
+                    <input type="text" class="form-control" placeholder="Start typing here to comment a task…" ng-model="comment.text">
+
+
+          <span class="input-group-btn">
+            <button class="btn btn-default dsggreenbg white" type="button"  ng-click="comment.task_id=task.id;addComment(commen)">Publish</button>
+          </span>
+                </div><!-- /input-group -->
+            </div>
+        </form>
+        <div class="clearfix"></div>
+    </div><!-- /row -->
+    <ul class="list-group">
+        <li ng-repeat="comm in comments" class="list-group-item"><a ng-click="editComm(comm.id)">{{ comm.text }}</a>
+            <span class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="delComm(comm.id)"></span>
+            <span class="glyphicon glyphicon-list-alt padding5555 flright"  ng-click="editComm(comm.id)"></span>
+        </li>
+    </ul>
+</div>
