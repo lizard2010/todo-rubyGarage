@@ -1,4 +1,4 @@
-<div class="tasklist">
+<div class="project-list">
     <div class="modal-header white"><span style="glyphicon glyphicon-list-alt fleft"></span>Project list</div>
     <div class="before-list ">
         <div class="col-lg-1">
@@ -7,9 +7,9 @@
         <form class="form-horizontal" role="form">
         <div class="col-lg-10">
         <div class="input-group fleft" >
-          <input type="text" class="form-control" placeholder="Start typing here to create a new project…">
+          <input type="text" class="form-control" ng-model="project.name" placeholder="Start typing here to create a new project…">
           <span class="input-group-btn">
-            <button class="btn btn-default dsggreenbg white" type="button">Save</button>
+            <button class="btn btn-default dsggreenbg white" type="button" ng-click="addPrj(project)">Save</button>
           </span>
         </div><!-- /input-group -->
         </div>
@@ -18,7 +18,7 @@
     </div><!-- /row -->
     <ul class="list-group">
       <li ng-repeat="prj in prjs" class="list-group-item"><a ng-click="viewPrj(prj.id)">{{ prj.name }}</a>
-          <span class="glyphicon glyphicon-remove  padding5555 flright red"></span>
+          <span class="glyphicon glyphicon-remove  padding5555 flright red" ng-click="delPrj($index)"></span>
           <span class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
           <span class="glyphicon glyphicon-list-alt padding5555 flright"></span>
       </li>

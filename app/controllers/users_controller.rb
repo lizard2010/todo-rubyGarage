@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action  only: [:create, :login, :projects]
+  before_action  only: [:create, :login, :projects, :tasks]
 
   # POST /tasks
   # POST /tasks.json
@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/tasks/:pid
+  def tasks
+    if session[:user_id]
+      @user = User.find(session[:user_id]);
+      render json: @user.projects.find(params[:pid]).tasks.order(:prio, created_at: :desc)
+    end
+  end
   # GET /users/projects.json
   def projects
     if session[:user_id]

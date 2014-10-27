@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
   match 'users/login', to: 'users#login', via: [:post]
   match 'users/projects', to: 'users#projects', via: [:get]
+  match 'users/tasks/:pid', to: 'users#tasks', via: [:get]
 
   get 'static_pages/index'
 

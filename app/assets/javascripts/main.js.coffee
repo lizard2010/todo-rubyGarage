@@ -35,6 +35,10 @@
       templateUrl: '../templates/projects/index.html',
       controller: 'PrjIndexCtrl'
     }).
+    when('/projects/:id', {
+      templateUrl: '../templates/projects/show.html',
+      controller: 'PrjShowCtrl'
+    }).
         otherwise({
 #      templateUrl: '../templates/home.html',
 #      controller: 'HomeCtrl'

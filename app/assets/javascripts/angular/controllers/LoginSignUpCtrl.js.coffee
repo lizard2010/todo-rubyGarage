@@ -5,12 +5,14 @@
     #alert(login_user)
     login_user.provider='todo'
     login_user.uid=0
-    $rootScope.currentUser = $http({
+    $http({
         method: 'POST',
         url: "/users.json",
         data: $.param({user: login_user}),
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    })
+    }).success((data) ->
+      $rootScope.currentUser = data
+    )
     if($rootScope.currentUser && $rootScope.currentUser.id)
        $location.url "/projects"
 
