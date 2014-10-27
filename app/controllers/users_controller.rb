@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
-  before_action  only: [:create]
+  before_action  only: [:create, :login, :projects]
 
-  def create
-    user = User.create(user_params)
-    session[:user_id] = user.id
-    redirect_to root_url
-  end
   # POST /tasks
   # POST /tasks.json
   def create
     @user = User.create(user_params)
+    session[:user_id] = @user.id
+    redirect_to root_url
 
     respond_to do |format|
       if @user.save!
@@ -22,9 +19,35 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  # POST /users/login.json
+  def login
+    @user = User.where(login_params).first;
+    respond_to do |format|
+      if @user
+        session[:user_id] = @user.id
+        format.json { render json: @user }
+      else
+        format.html {}
+        format.json { render json: { status: :not_found} }
+      end
+    end
+  end
+
+  # GET /users/projects.json
+  def projects
+    if session[:user_id]
+      @user = User.find(session[:user_id]);
+      render json: @user.projects
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :passwd, :provider, :uid)
+  end
+  def login_params
+    params.require(:user).permit(:email, :passwd)
   end
 
 end
