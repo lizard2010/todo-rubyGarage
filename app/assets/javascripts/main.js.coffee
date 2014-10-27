@@ -27,9 +27,11 @@
       templateUrl: '../templates/tasks/show.html',
       controller: 'TaskShowCtrl'
     }).otherwise({
-      templateUrl: '../templates/home.html',
-      controller: 'HomeCtrl'
-    }) 
+#      templateUrl: '../templates/home.html',
+#      controller: 'HomeCtrl'
+      templateUrl: '../templates/login/index.html',
+      controller: 'LoginIndexCtrl'
+    })
 ])
 @todo.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
