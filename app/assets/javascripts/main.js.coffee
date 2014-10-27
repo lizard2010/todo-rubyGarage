@@ -23,16 +23,27 @@
       templateUrl: '../templates/login/sign-up.html',
       controller: 'LoginSignUpCtrl'
     }).
+    when('/tasks', {
+      templateUrl: '../templates/tasks/index.html',
+      controller: 'TaskIndexCtrl'
+    }).
     when('/tasks/:id', {
       templateUrl: '../templates/tasks/show.html',
       controller: 'TaskShowCtrl'
-    }).otherwise({
+    }).
+    when('/projects', {
+      templateUrl: '../templates/projects/index.html',
+      controller: 'PrjIndexCtrl'
+    }).
+        otherwise({
 #      templateUrl: '../templates/home.html',
 #      controller: 'HomeCtrl'
       templateUrl: '../templates/login/index.html',
       controller: 'LoginIndexCtrl'
     })
 ])
+
 @todo.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
+
