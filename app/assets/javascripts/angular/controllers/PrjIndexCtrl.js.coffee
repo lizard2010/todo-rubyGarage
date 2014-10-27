@@ -24,7 +24,7 @@
       )
 
   $scope.viewPrj = (id) ->
-#    $location.url "/projects/#{id}"
+    $location.url "/projects/#{id}"
 
 ]
 

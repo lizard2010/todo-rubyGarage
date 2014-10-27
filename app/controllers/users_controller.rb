@@ -48,6 +48,13 @@ class UsersController < ApplicationController
       render json: @user.projects
     end
   end
+  # GET /users/projects/:pid.json
+  def project
+    if session[:user_id]
+      @prj = User.find(session[:user_id]).projects.find(params[:pid])
+      render json: @prj
+    end
+  end
 
   private
   def user_params
