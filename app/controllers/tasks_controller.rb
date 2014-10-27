@@ -61,6 +61,20 @@ class TasksController < ApplicationController
     end
   end
 
+  # POST /tasks/:pid.json
+  def project
+    if session[:user_id]
+      @task = User.find(session[:user_id]).projects.find(params[:pid]).tasks.build(crtask_params)
+      if @task.save!
+        render json: @task
+      else
+        format.json { head :no_content }
+      end
+
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -68,7 +82,10 @@ class TasksController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:name, :project_id, :prio, :deadline, :done)
-    end
+  def task_params
+    params.require(:task).permit(:name, :project_id, :prio, :deadline, :done)
+  end
+  def crtask_params
+    params.require(:task).permit(:name, :project_id)
+  end
 end

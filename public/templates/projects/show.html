@@ -7,9 +7,11 @@
         <form class="form-horizontal" role="form">
         <div class="col-lg-10">
         <div class="input-group fleft" >
-          <input type="text" class="form-control" placeholder="Start typing here to create a task…">
+          <input type="text" class="form-control" placeholder="Start typing here to create a task…" ng-model="task.name">
+
+
           <span class="input-group-btn">
-            <button class="btn btn-default dsggreenbg white" type="button">Add task</button>
+            <button class="btn btn-default dsggreenbg white" type="button"  ng-click="task.project_id=project.id;addTask(task)">Add task</button>
           </span>
         </div><!-- /input-group -->
         </div>

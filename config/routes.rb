@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match 'users/projects', to: 'users#projects', via: [:get]
   match 'users/projects/:pid', to: 'users#project', via: [:get]
   match 'users/tasks/:pid', to: 'users#tasks', via: [:get]
-
+  match '/tasks/:pid', to: 'tasks#project', via: [:post]
   get 'static_pages/index'
 
   resources :projects
