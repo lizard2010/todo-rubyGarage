@@ -1,11 +1,15 @@
 <div class="loginpopup">
-    <div class="modal-header white">Please enter your email and password</div>
+    <div class="modal-header white">Please enter your name, email and password</div>
 
     <div class="padding5555">
-        <h1 class="white pad30perc">Login</h1>
+        <h1 class="white pad30perc">Register form</h1>
     </div>
     <form role="form">
     <div class="body padding5555">
+        <div class="form-group">
+            <label for="inputName1">Your name:</label>
+            <input  ng-model="login_user.name" class="form-control" id="inputName1" placeholder="Enter your name"/>
+        </div>
       <div class="form-group">
         <label for="inputEmail1">Email:</label>
           <input type="email" ng-model="login_user.email" class="form-control" id="inputEmail1" placeholder="Enter email"/>
@@ -14,11 +18,8 @@
           <label for="inputPass1">Password:</label>
           <input type="password" ng-model="login_user.password" class="form-control" id="inputPass1" />
       </div>
-        <button ng-click="login()" class="btn btn-primary" >Login</button>  or
-        <fb:login-button  size="large" show_faces="false">Login via Facebook</fb:login-button>
-    </div>
-    <div class="pad30perc padding5555">
-        <button ng-click="gosignup()" class="btn btn-primary">Free sign-up!</button>
+        <button ng-click="signup(login_user)" class="btn btn-primary" >Create account</button>  or
+        <button ng-click="gologin()" class="btn btn-primary" >Back to login</button>
     </div>
     </form>
 </div>

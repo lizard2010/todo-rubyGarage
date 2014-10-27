@@ -19,6 +19,10 @@
       templateUrl: '../templates/login/index.html',
       controller: 'LoginIndexCtrl'
     }).
+    when('/signup', {
+      templateUrl: '../templates/login/sign-up.html',
+      controller: 'LoginSignUpCtrl'
+    }).
     when('/tasks/:id', {
       templateUrl: '../templates/tasks/show.html',
       controller: 'TaskShowCtrl'
@@ -27,3 +31,6 @@
       controller: 'HomeCtrl'
     }) 
 ])
+@todo.config ["$httpProvider", ($httpProvider) ->
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+]
