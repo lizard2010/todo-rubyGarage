@@ -57,3 +57,7 @@
     )
 ]
 
+@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+  if !$rootScope.current_user &&  $location.url() != '/login'
+         $location.url "/login"
+]
