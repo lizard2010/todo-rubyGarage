@@ -58,7 +58,13 @@
     )
 ]
 
+#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+#  if !$rootScope.current_user &&  $location.url() != '/login'
+#         $location.url "/login"
+#]
+
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
-  if !$rootScope.current_user &&  $location.url() != '/login'
-         $location.url "/login"
+  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+     if !$rootScope.current_user  &&  $location.url() != '/login'
+        $location.url "/login"
 ]
