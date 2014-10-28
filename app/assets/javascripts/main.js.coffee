@@ -52,7 +52,7 @@
 ]
 @todo.run ['$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.setCurrUser = () ->
-    $http.get('./user/current.json').success((data) ->
+    $http.get('./users/current.json').success((data) ->
       $rootScope.current_user = data
       $location.url "/projects"
     )
@@ -70,9 +70,9 @@
         $location.url "/login"
 ]
 
-@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
-  $rootScope.$on "$routeChangeStart", (event, next, current) ->
-     alert  "2nd: " + $location.url() + " " +  $rootScope.current_user
-     if $rootScope.current_user  &&  $location.url() == '/'
-        $location.url "/projects"
-]
+#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+#  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+#     alert  "2nd: " + $location.url() + " " +  $rootScope.current_user
+#     if $rootScope.current_user  &&  $location.url() == '/'
+#        $location.url "/projects"
+#]
