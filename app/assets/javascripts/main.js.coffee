@@ -65,14 +65,14 @@
 
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->
-     alert next + current + $location.url()
+     alert  "1st: " +  $location.url() + " " +  $rootScope.current_user
      if !$rootScope.current_user  &&  $location.url() != '/login'
         $location.url "/login"
 ]
 
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->
-     alert  next + current + $location.url()
+     alert  "2nd: " + $location.url() + " " +  $rootScope.current_user
      if $rootScope.current_user  &&  $location.url() == '/'
         $location.url "/projects"
 ]
