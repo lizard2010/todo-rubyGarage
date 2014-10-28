@@ -40,10 +40,10 @@
       controller: 'PrjShowCtrl'
     }).
         otherwise({
-#      templateUrl: '../templates/home.html',
-#      controller: 'HomeCtrl'
-      templateUrl: '../templates/login/index.html',
-      controller: 'LoginIndexCtrl'
+      templateUrl: '../templates/home.html',
+      controller: 'HomeCtrl'
+#      templateUrl: '../templates/login/index.html',
+#      controller: 'LoginIndexCtrl'
     })
 ])
 
@@ -63,14 +63,16 @@
 #         $location.url "/login"
 #]
 
-#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
-#  $rootScope.$on "$routeChangeStart", (event, next, current) ->
-#     if !$rootScope.current_user  &&  $location.url() != '/login'
-#        $location.url "/login"
-#]
+@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+     alert next + current + $location.url()
+     if !$rootScope.current_user  &&  $location.url() != '/login'
+        $location.url "/login"
+]
 
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->
+     alert  next + current + $location.url()
      if $rootScope.current_user  &&  $location.url() == '/'
         $location.url "/projects"
 ]
