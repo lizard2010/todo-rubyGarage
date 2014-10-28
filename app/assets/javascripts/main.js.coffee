@@ -50,13 +50,16 @@
 @todo.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
-@todo.run ['$rootScope', '$location', ($rootScope, $location) ->
-  $rootScope.setCurrUser = () ->
-    $http.get('./users/current.json').success((data) ->
-      $rootScope.current_user = data
-      $location.url "/projects"
-    )
-]
+
+# executed much early, moved to LoginIndexCtrl body
+#@todo.run ['$rootScope', '$location', ($rootScope, $location) ->
+##  $rootScope.setCurrUser = () ->
+##    alert "RUN block, ".  $location.url()
+#    $http.get('./users/current.json').success((data) ->
+#      $rootScope.current_user = data
+##      $location.url "/projects"
+#    )
+#]
 
 #@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
 #  if !$rootScope.current_user &&  $location.url() != '/login'
@@ -65,14 +68,14 @@
 
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->
-     alert  "1st: " +  $location.url() + " " +  $rootScope.current_user
+#     alert  "1st: " +  $location.url() + " " +  $rootScope.current_user
      if !$rootScope.current_user  &&  $location.url() != '/login'
         $location.url "/login"
 ]
 
-#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
-#  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+  $rootScope.$on "$routeChangeStart", (event, next, current) ->
 #     alert  "2nd: " + $location.url() + " " +  $rootScope.current_user
-#     if $rootScope.current_user  &&  $location.url() == '/'
-#        $location.url "/projects"
-#]
+     if $rootScope.current_user  &&  $location.url() == '/'
+        $location.url "/projects"
+]
