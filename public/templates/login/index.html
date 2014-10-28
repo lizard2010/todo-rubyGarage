@@ -15,7 +15,7 @@
           <input type="password" ng-model="login_user.passwd" class="form-control" id="inputPass1" />
       </div>
         <button ng-click="login(login_user)" class="btn btn-primary" >Login</button>  or
-        <fb:login-button id="sign_in" size="large" show_faces="false" onlogin="fbloginCallback">Login via Facebook</fb:login-button>
+        <fb:login-button id="sign_in" size="large" show_faces="false" onlogin="fbloginCallback()">Login via Facebook</fb:login-button>
     </div>
     <div class="pad30perc padding5555">
         <button ng-click="gosignup()" class="btn btn-primary">Free sign-up!</button>
