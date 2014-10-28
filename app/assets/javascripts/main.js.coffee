@@ -54,6 +54,7 @@
   $rootScope.setCurrUser = () ->
     $http.get('./user/current.json').success((data) ->
       $rootScope.current_user = data
+      $location.url "/projects"
     )
 ]
 
