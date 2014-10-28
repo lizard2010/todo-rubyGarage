@@ -50,7 +50,7 @@
 @todo.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
-@todo.run ['$rootScope', ($rootScope) ->
+@todo.run ['$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.setCurrUser = () ->
     $http.get('./user/current.json').success((data) ->
       $rootScope.current_user = data
@@ -63,8 +63,14 @@
 #         $location.url "/login"
 #]
 
+#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
+#  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+#     if !$rootScope.current_user  &&  $location.url() != '/login'
+#        $location.url "/login"
+#]
+
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->
-     if !$rootScope.current_user  &&  $location.url() != '/login'
-        $location.url "/login"
+     if $rootScope.current_user  &&  $location.url() == '/'
+        $location.url "/projects"
 ]
