@@ -56,6 +56,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/current.json
+  def current
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    render json: @current_user
+  end
+
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :passwd, :provider, :uid)

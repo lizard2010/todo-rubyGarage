@@ -50,4 +50,10 @@
 @todo.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
+@todo.run ['$rootScope', ($rootScope) ->
+  $rootScope.setCurrUser = () ->
+    $http.get('./user/current.json').success((data) ->
+      $rootScope.current_user = data
+    )
+]
 
