@@ -7,9 +7,10 @@
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success((data) ->
       $rootScope.currentUser = data
+      if(data.id)
+        $location.url "/projects"
     )
-    if($rootScope.currentUser && $rootScope.currentUser.id)
-      $location.url "/projects"
+
 
   $scope.gosignup = () ->
     $location.url "/signup"
