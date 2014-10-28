@@ -1,5 +1,5 @@
-#jQuery ->
- # $('body').prepend('<div id="fb-root"></div>')
+jQuery ->
+  $('body').prepend('<div id="fb-root"></div>')
 
  # $.ajax
  #   url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
@@ -20,8 +20,15 @@
 #      FB.logout() if response.authResponse
 #    true
 
+#fbloginCallback() ->
+#  window.location.href('/auth/facebook/callback')
 
-`(function(d, s, id) {
+`
+function fbloginCallback(){
+  window.location.href('/auth/facebook/callback');
+}
+
+(function(d, s, id) {
 /* FB button **/
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
