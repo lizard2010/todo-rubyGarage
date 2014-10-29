@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   match 'users/current', to: 'users#current', via: [:get]
   match 'users/tasks/:pid', to: 'users#tasks', via: [:get]
   match '/tasks/:pid', to: 'tasks#project', via: [:post]
+  match '/comments/:pid/:tid', to: 'comments#show', via: [:get], as: 'comments_fltrd'
 
   get 'static_pages/index'
 
   resources :projects
-
+  resources :comments
   resources :tasks
   resources :users
 

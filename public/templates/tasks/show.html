@@ -24,7 +24,7 @@
 
 
           <span class="input-group-btn">
-            <button class="btn btn-default dsggreenbg white" type="button"  ng-click="comment.task_id=task.id;addComment(commen)">Publish</button>
+            <button class="btn btn-default dsggreenbg white" type="button"  ng-click="comment.task_id=task.id; addComment(comment, project.id)">Publish</button>
           </span>
                 </div><!-- /input-group -->
             </div>
@@ -34,7 +34,7 @@
     <ul class="list-group">
         <li ng-repeat="comm in comments" class="list-group-item"><a ng-click="editComm(comm.id)">{{ comm.text }}</a>
             <span class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="delComm(comm.id)"></span>
-            <span class="glyphicon glyphicon-list-alt padding5555 flright"  ng-click="editComm(comm.id)"></span>
+            <span class="glyphicon glyphicon-edit padding5555 flright"  ng-click="editComm(comm.id)"></span>
         </li>
     </ul>
 </div>
