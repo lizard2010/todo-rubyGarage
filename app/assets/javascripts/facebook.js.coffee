@@ -24,12 +24,12 @@ jQuery ->
 #  window.location.href('/auth/facebook/callback')
 
 `
-/*function fbloginCallback(){
-  window.location.href('/auth/facebook/callback');
-}
+//function fbloginCallback(){
+//  window.location.href('/auth/facebook/callback');
+//}
 
 (function(d, s, id) {
-/* FB button ** /
+/* FB button **/
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
@@ -37,5 +37,5 @@ jQuery ->
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-*/
+
 `
