@@ -16,7 +16,7 @@ jQuery ->
 
   $('#sign_in2').click (e) ->
     e.preventDefault()
-    FB.login (response) ->
+    FB.login(response) ->
       window.location = '/auth/facebook/callback' if response.authResponse
 
   $('#sign_out').click (e) ->
@@ -24,28 +24,8 @@ jQuery ->
       FB.logout() if response.authResponse
     true
 
-#fbloginCallback() ->
-#  window.location.href('/auth/facebook/callback')
 
 `
-function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-     if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-       window.location.href('/auth/facebook/callback');
-     }
-}
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-}
-
-//function fbloginCallback(){
-//  window.location.href('/auth/facebook/callback');
-//}
-
 (function(d, s, id) {
 /* FB button **/
   var js, fjs = d.getElementsByTagName(s)[0];
