@@ -12,8 +12,8 @@
   <% if current_user %>
       Welcome <strong><%= current_user.name %></strong>!
       <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-      <a href="" id="sign_in">login via fb</a>
+  <<% else %>
+    <!--  <a href="" id="sign_in">login via fb</a> -->
   <% end %>
   <!-- <%= session.to_json.html_safe? %> -->
 </div>
