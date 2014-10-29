@@ -10,10 +10,10 @@ jQuery ->
   window.fbAsyncInit = ->
     FB.init(appId: '341975405982394', cookie: true)
 
-  $('#sign_in').click (e) ->
-    e.preventDefault()
-    FB.login (response) ->
-      window.location = '/auth/facebook/callback' if response.authResponse
+  #$('#sign_in2').click (e) ->
+  #  e.preventDefault()
+  #  FB.login (response) ->
+  #    window.location = '/auth/facebook/callback' if response.authResponse
 
   $('#sign_out').click (e) ->
     FB.getLoginStatus (response) ->
@@ -24,6 +24,20 @@ jQuery ->
 #  window.location.href('/auth/facebook/callback')
 
 `
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+     if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+       window.location.href('/auth/facebook/callback');
+     }
+}
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+}
+
 //function fbloginCallback(){
 //  window.location.href('/auth/facebook/callback');
 //}
@@ -34,7 +48,7 @@ jQuery ->
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=341975405982394&version=v1.0";
-fjs.parentNode.insertBefore(js, fjs);
+  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
 
