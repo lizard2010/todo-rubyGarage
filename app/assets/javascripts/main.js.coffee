@@ -3,7 +3,7 @@
 # This line is related to our Angular app, not to our
 # HomeCtrl specifically. This is basically how we tell
 # Angular about the existence of our application.
-@todo = angular.module('todo', ['ngRoute'])
+@todo = angular.module('todo', ['ngRoute', 'xeditable'])
 
 # This routing directive tells Angular about the default
 # route for our application. The term "otherwise" here
@@ -51,20 +51,9 @@
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
 
-# executed much early, moved to LoginIndexCtrl body
-#@todo.run ['$rootScope', '$location', ($rootScope, $location) ->
-##  $rootScope.setCurrUser = () ->
-##    alert "RUN block, ".  $location.url()
-#    $http.get('./users/current.json').success((data) ->
-#      $rootScope.current_user = data
-##      $location.url "/projects"
-#    )
-#]
+@todo.run (editableOptions) ->
+   editableOptions.theme = 'bs3'  # // bootstrap3 theme. Can be also 'bs2', 'default'
 
-#@todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
-#  if !$rootScope.current_user &&  $location.url() != '/login'
-#         $location.url "/login"
-#]
 
 @todo.run [ '$rootScope', '$location', ($rootScope, $location) ->
   $rootScope.$on "$routeChangeStart", (event, next, current) ->

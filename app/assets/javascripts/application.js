@@ -17,4 +17,5 @@
 //= require angular
 //= require main
 //= require bootstrap-sprockets
+//= require xeditable
 //= require_tree .

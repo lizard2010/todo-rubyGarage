@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   match 'users/tasks/:pid', to: 'users#tasks', via: [:get]
   match '/tasks/:pid', to: 'tasks#project', via: [:post]
   match '/comments/:pid/:tid', to: 'comments#show', via: [:get], as: 'comments_fltrd'
+  match '/comments/:pid/:tid', to: 'comments#update', via: [:put]
+  match '/comments/:pid/:tid/:id', to: 'comments#destroy', via: [:delete]
 
   get 'static_pages/index'
 

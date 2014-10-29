@@ -32,9 +32,11 @@
         <div class="clearfix"></div>
     </div><!-- /row -->
     <ul class="list-group">
-        <li ng-repeat="comm in comments" class="list-group-item"><a ng-click="editComm(comm.id)">{{ comm.text }}</a>
-            <span class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="delComm(comm.id)"></span>
-            <span class="glyphicon glyphicon-edit padding5555 flright"  ng-click="editComm(comm.id)"></span>
+        <li ng-repeat="comm in comments" class="list-group-item">
+            <span  editable-text="comm.text" onbeforesave="updateComment($data, $index)" e-form="textComment$index">{{comm.text}}</span>
+
+            <span title="Delete this comment" class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="delComm(project.id, task.id, $index)"></span>
+            <span title="Edit this comment" class="glyphicon glyphicon-edit padding5555 flright"  ng-click="textComment$index.$show()" ng-hide="textComment$index.$visible"></span>
         </li>
     </ul>
 </div>

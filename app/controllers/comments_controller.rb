@@ -29,7 +29,10 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments/:pid.json
   def create
-    @comment =      User.find(session[:user_id]).projects.find(params[:pid]).tasks.find(params[:comment][:task_id]).comments.build(comment_params)
+    @comment = User.find(session[:user_id])
+          .projects.find(params[:pid])
+          .tasks.find(params[:comment][:task_id])
+          .comments.build(comment_params)
         #Comment.new(comment_params)
 
     respond_to do |format|
@@ -44,22 +47,28 @@ class CommentsController < ApplicationController
   end
 
   # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
+  # PATCH/PUT /comments/:pid/:tid.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    @comment  = User.find(session[:user_id])
+      .projects.find(params[:pid])
+      .tasks.find(params[:tid])
+      .comments.find(params[:id])
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render json: @comment.errors, status: :unprocessable_entity
     end
+
   end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @comment  = User.find(session[:user_id])
+      .projects.find(params[:pid])
+      .tasks.find(params[:tid])
+      .comments.find(params[:id])
+
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }

@@ -21,14 +21,22 @@
       $scope.comments.push(data)
     )
 
-  $scope.delComment = (idx) ->
+  $scope.delComm = (pid, tid, idx) ->
     comm_to_delete = $scope.comments[idx];
-    if confirm("Remove '" + comm_to_delete.name+"'?")
+    confirm_text = "Remove '" + comm_to_delete.text + "' ?"
+    if confirm(confirm_text)
+      url = ["", "comments", pid, tid,  comm_to_delete.id ].join('/')
       $http({
         method: 'DELETE',
-        url: "/comments/" + comm_to_delete.id + '.json',
+        url: url + '.json',
       }).success((data) ->
         $scope.comments.splice(idx, 1);
       )
 
+  $scope.updateComment = (data, idx) ->
+    url = ['/comments/' ,  $scope.project.id ,  '/' ,  $scope.comments[idx].task_id, '.json'].join('')
+    $http.put(url , {id: $scope.comments[idx].id, comment: {text: data}}).success((data) ->
+        $scope.comments[idx] = data
+    )
+    true
 ]
