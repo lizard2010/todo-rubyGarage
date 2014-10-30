@@ -18,4 +18,5 @@
 //= require main
 //= require bootstrap-sprockets
 //= require xeditable
+//= require ui-bootstrap-tpls
 //= require_tree .

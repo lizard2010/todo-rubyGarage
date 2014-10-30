@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match 'users/current', to: 'users#current', via: [:get]
   match 'users/tasks/:pid', to: 'users#tasks', via: [:get]
   match '/tasks/:pid', to: 'tasks#project', via: [:post]
+  match '/tasks/:pid/:id', to: 'tasks#destroy', via: [:delete]
   match '/comments/:pid/:tid', to: 'comments#show', via: [:get], as: 'comments_fltrd'
   match '/comments/:pid/:tid', to: 'comments#update', via: [:put]
   match '/comments/:pid/:tid/:id', to: 'comments#destroy', via: [:delete]

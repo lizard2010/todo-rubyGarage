@@ -19,11 +19,9 @@
             <div class="col-lg-10">
                 <div class="input-group fleft" >
                     <input type="text" class="form-control" placeholder="Start typing here to comment a task…" ng-model="comment.text">
-
-
-          <span class="input-group-btn">
-            <button class="btn btn-default dsggreenbg white" type="button"  ng-click="comment.task_id=task.id; addComment(comment, project.id)">Publish</button>
-          </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default dsggreenbg white" type="button"  ng-click="comment.task_id=task.id; addComment(comment, project.id)">Publish</button>
+                    </span>
                 </div><!-- /input-group -->
             </div>
         </form>

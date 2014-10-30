@@ -41,6 +41,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
+      @task = User.find(session[:user_id]).projects.find(params[:task][:project_id]).tasks.find(params[:id])
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
@@ -52,8 +53,9 @@ class TasksController < ApplicationController
   end
 
   # DELETE /tasks/1
-  # DELETE /tasks/1.json
+  # DELETE /tasks/:pid/:id.json
   def destroy
+    @task = User.find(session[:user_id]).projects.find(params[:pid]).tasks.find(params[:id])
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }

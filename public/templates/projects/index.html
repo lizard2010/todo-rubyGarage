@@ -28,9 +28,8 @@
     </div><!-- /row -->
     <ul class="list-group">
       <li ng-repeat="prj in prjs" class="list-group-item"><a ng-click="viewPrj(prj.id)">{{ prj.name }}</a>
-          <span class="glyphicon glyphicon-remove  padding5555 flright red" ng-click="delPrj($index)"></span>
-          <span class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
-          <span class="glyphicon glyphicon-list-alt padding5555 flright"></span>
+          <span title="Remove this project" class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="textPrj$index.$show()" ng-hide="textPrj$index.$visible""></span>
+          <span title="Tasklist for this project" class="glyphicon glyphicon-list-alt padding5555 flright"></span>
       </li>
     </ul>
 </div>

@@ -1560,6 +1560,9 @@ angular.module('xeditable').factory('editableThemes', function() {
           case 'editableUrl':
           case 'editableSearch':
           case 'editableDate':
+              this.inputEl.append('<span class="input-group-btn"> ' +
+                                  '<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>' +
+                                  '</span>');
           case 'editableDatetime':
           case 'editableTime':
           case 'editableMonth':

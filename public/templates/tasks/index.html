@@ -18,9 +18,11 @@
     </div><!-- /row -->
     <ul class="list-group">
       <li ng-repeat="task in tasks" class="list-group-item"><a ng-click="viewTask(task.id)">{{ task.name }}</a>
-          <span class="glyphicon glyphicon-remove  padding5555 flright red"></span>
-          <span class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
-          <span class="glyphicon glyphicon-list-alt padding5555 flright"></span>
+          /home/lizard/dev/RubyGarage/todoRG/public/templates/tasks/index.html
+          <span title="Remove this task" class="glyphicon glyphicon-remove  padding5555 flright red"  ng-click="textPrj$index.$show()" ng-hide="textPrj$index.$visible""></span>
+          <span title="Change priority" class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
+          <span title="Comments for this task" class="glyphicon glyphicon-list-alt padding5555 flright"></span>
+          <span title="Status this task" class="glyphicon glyphicon-ok-circle padding5555 flright"></span>
       </li>
     </ul>
 </div>
