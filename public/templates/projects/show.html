@@ -29,19 +29,15 @@
         <div class="clearfix"></div>
     </div><!-- /row -->
     <ul class="list-group">
-      <li ng-repeat="task in tasks" class="list-group-item">
-          <a ng-click="viewTask(task.id)" editable-text="task.name" onbeforesave="updateTask($data, $index)" e-form="textTaskName$index">{{ task.name }}</a>
-          <!--span  editable-text="task.name" onbeforesave="updateTask($data, $index)" e-form="textTaskName$index">{{task.name}}</span-->
-
-
+      <li ng-repeat="task in tasks | orderBy: task.prio" class="list-group-item">
+          <a ng-click="viewTask(task.id)" ng-class="{strike: task.done}" editable-text="task.name" onbeforesave="updateTask($data, $index)" e-form="textTaskName$index">{{ task.name }}</a>
           <span title="Remove this task" class="glyphicon glyphicon-remove  padding5555 flright red"   ng-click="delTask(project.id, $index)"></span>
-          <span title="Change priority" class="glyphicon glyphicon-circle-arrow-up padding5555 flright"></span>
-          <span title="Comments for this task" class="glyphicon glyphicon-list-alt padding5555 flright"></span>
-          <span title="Status this task" class="glyphicon glyphicon-ok-circle padding5555 flright"></span>
+          <span title="Change priority"  class="glyphicon padding5555 flright" ng-class="{'red glyphicon-circle-arrow-down': task.prio, 'glyphicon-circle-arrow-up': !task.prio }" ng-click="updateTaskPrio($index)"></span>
+          <span title="Look for comments" class="glyphicon glyphicon-list-alt padding5555 flright" ng-click="viewTask(task.id)"></span>
+          <span title="Status this task" class="glyphicon glyphicon-ok-circle padding5555 flright" ng-class="{green: task.done, red: !task.done}" ng-click="updateTaskStatus($index)"></span>
           <span title="Set due" class="glyphicon glyphicon-calendar padding5555 flright"  ng-click="textTaskDue$index.$show()" ng-hide="textTaskDue$index.$visible"></span>
-          <span title="Edit this comment" class="glyphicon glyphicon-edit padding5555 flright"  ng-click="textTaskName$index.$show()" ng-hide="textTaskName$index.$visible"></span>
-
-          <a class="flright" editable-bsdate="task.deadline"  e-datepicker-popup="dd-MMMM-yyyy" onbeforesave="updateTaskDue($data, $index)" e-form="textTaskDue$index" >{{ (task.deadline | date:"dd/MM/yyyy") || empty}}</a>
+          <span title="Edit this task" class="glyphicon glyphicon-edit padding5555 flright"  ng-click="textTaskName$index.$show()" ng-hide="textTaskName$index.$visible" ></span>
+          <label class="flright label"  ng-class="compareDateStyle(task.deadline)" editable-bsdate="task.deadline"  e-datepicker-popup="dd-MMMM-yyyy" onbeforesave="updateTaskDue($data, $index)" e-form="textTaskDue$index" >{{ (task.deadline | date:"dd/MM/yyyy") }}</label>
       </li>
     </ul>
 </div>

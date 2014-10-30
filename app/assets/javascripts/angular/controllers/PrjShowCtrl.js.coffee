@@ -27,9 +27,32 @@
   $scope.updateTask = (data, idx) ->
     #url = ['/tasks/' ,  $scope.project.id ,  '/' ,  $scope.tasks[idx].task_id, '.json'].join('')
     $http.put( '/tasks/' + $scope.tasks[idx].id + '.json', {task: {name: data, project_id: $scope.tasks[idx].project_id}}).success((data) ->
-      $scope.task[idx] = data
+      $scope.tasks[idx] = data
     )
     true
+  $scope.updateTaskDue = (data, idx) ->
+    $http.put( '/tasks/' + $scope.tasks[idx].id + '.json', {task: {deadline: data, project_id: $scope.tasks[idx].project_id}}).success((data) ->
+      $scope.tasks[idx] = data
+    )
+    true
+
+  $scope.updateTaskStatus = (idx) ->
+    # trigger it!
+    done = if $scope.tasks[idx].done then  false  else true
+    $http.put( '/tasks/' + $scope.tasks[idx].id + '.json', {task: {done: done, project_id: $scope.tasks[idx].project_id}}).success((data) ->
+      $scope.tasks[idx] = data
+    )
+    true
+
+  $scope.updateTaskPrio = (idx) ->
+    # trigger it!
+    prio = if $scope.tasks[idx].prio then  false  else true
+    $http.put( '/tasks/' + $scope.tasks[idx].id + '.json', {task: {prio: prio, project_id: $scope.tasks[idx].project_id}}).success((data) ->
+      $scope.tasks[idx] = data
+      $scope.$apply();
+    )
+    true
+
 
   $scope.delTask = (pid, idx) ->
     task_to_delete = $scope.tasks[idx];
@@ -40,4 +63,9 @@
         $scope.tasks.splice(idx, 1);
       )
     true
+
+  $scope.compareDateStyle = (dt) ->
+    dtn = new Date(dt)
+    rightnow = new Date();
+    if dtn > rightnow then  "label-success" else "label-danger"
 ]

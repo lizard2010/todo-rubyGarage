@@ -44,7 +44,7 @@ class TasksController < ApplicationController
       @task = User.find(session[:user_id]).projects.find(params[:task][:project_id]).tasks.find(params[:id])
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
+        format.json { render json: @task, status: :ok}
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
